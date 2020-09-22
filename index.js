@@ -18,7 +18,6 @@ function getName(character) {
   // ⭐️ Example Solution Provided For First Function ⭐️
   return character.name
 }
-
 /**
  * ### Challenge `getFilmCount`
  * MVP Challenge 🤓
@@ -28,9 +27,12 @@ function getName(character) {
  *
  * Sample data expected output: 5
  */
-function getFilmCount(character) {
-  // TODO: Add your code inside the functions (others below).
 
+ //Write a function called get FilmCount
+ //Must return number of elements in the 'films' property
+ //
+function getFilmCount(character) {
+  return character.films.length
 }
 
 /**
@@ -42,7 +44,7 @@ function getFilmCount(character) {
  * If length is 0. Return 'none'
 */
 function getSecondStarshipName(character) {
-  // TODO: Add your code here.
+  return character.vehicles.name
 }
 
 /**
@@ -55,7 +57,7 @@ function getSecondStarshipName(character) {
  *    Result: `Luke Skywalker, 172cm, 77kg. Featured in 5 films.`
  */
 function getSummary(character) {
-  // TODO: Add your code here.
+
 }
 
 /**
