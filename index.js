@@ -44,7 +44,10 @@ function getFilmCount(character) {
  * If length is 0. Return 'none'
 */
 function getSecondStarshipName(character) {
-  return character.vehicles.name
+  if(character.starships[1].length === '0') {
+    return 'none'
+  } 
+  return character.starships[1].name
 }
 
 /**
@@ -57,7 +60,11 @@ function getSecondStarshipName(character) {
  *    Result: `Luke Skywalker, 172cm, 77kg. Featured in 5 films.`
  */
 function getSummary(character) {
-
+  this.name = character.name;
+  this.height = character.height;
+  this.mass = character.mass;
+  this.films = character.films.length;
+  return `${this.name}, ${this.height}cm, ${this.mass}kg. Featured in ${this.films} films.`
 }
 
 /**
@@ -69,7 +76,9 @@ function getSummary(character) {
  * Sample data expected output: 8000
 */
 function getVehiclesCostInCreditsSumTotal(character) {
-  // TODO: Add your code here.
+  character.vehicles.cost_in_credits = 0
+  const credits = character.vehicles.cost_in_credits + character.vehicles[1].cost_in_credits
+  return credits;
 }
 
 /**
@@ -83,7 +92,13 @@ function getVehiclesCostInCreditsSumTotal(character) {
  * Sample data expected output: 27
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
-  // TODO: Add your code here.
+  const luke = (character.starships.cargo_capacity + character.starships.passengers) + (character.starships[1].cargo_capacity + character.starships[1].passengers)
+  const obi = (character.starships.cargo_capacity + character.starships.passengers) + (character.starships[1].cargo_capacity + character.starships[1].passengers)
+  const lea = (character.starships.cargo_capacity + character.starships.passengers) + (character.starships[1].cargo_capacity + character.starships[1].passengers)
+ 
+  return luke
+  return obi
+  return lea
 }
 
 /**
