@@ -44,10 +44,11 @@ function getFilmCount(character) {
  * If length is 0. Return 'none'
 */
 function getSecondStarshipName(character) {
-  if(character.starships[1].length === '0') {
-    return 'none'
-  } 
-  return character.starships[1].name
+  if (character.starships.length == 0) {
+    return 'none';
+  } else {
+    return character.starships[1].name;
+  }
 }
 
 /**
@@ -76,9 +77,10 @@ function getSummary(character) {
  * Sample data expected output: 8000
 */
 function getVehiclesCostInCreditsSumTotal(character) {
-  character.vehicles.cost_in_credits = 0
-  const credits = character.vehicles.cost_in_credits + character.vehicles[1].cost_in_credits
-  return credits;
+  let total = character.vehicles.reduce(function (acc, item) {
+    return acc + item.cost_in_credits;
+  }, 0);
+  return total;
 }
 
 /**
@@ -92,13 +94,13 @@ function getVehiclesCostInCreditsSumTotal(character) {
  * Sample data expected output: 27
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
-  const luke = (character.starships.cargo_capacity + character.starships.passengers) + (character.starships[1].cargo_capacity + character.starships[1].passengers)
-  const obi = (character.starships.cargo_capacity + character.starships.passengers) + (character.starships[1].cargo_capacity + character.starships[1].passengers)
-  const lea = (character.starships.cargo_capacity + character.starships.passengers) + (character.starships[1].cargo_capacity + character.starships[1].passengers)
- 
-  return luke
-  return obi
-  return lea
+  let totalCrew = character.starships.reduce(function (acc, item) {
+    return acc + item.crew
+  }, 0);
+  let totalPassengers = character.starships.reduce(function (acc, item) {
+    return acc + item.passengers;
+  }, 0);
+  return totalCrew + totalPassengers;
 }
 
 /**
@@ -115,7 +117,11 @@ function getStarshipPassengerAndCrewSumTotal(character) {
  * Given film #7, expected error: `There are only 3 Star Wars movies. Flan fiction excluded.`
 */
 function getNthFilm(character, filmNumber) {
-  // TODO: Add your code here.
+  if (filmNumber < 1 || filmNumber > 3) {
+    return 'error, there are only 3 Star Wars movies. Flan fiction excluded.';
+  } else {
+    return character.films[filmNumber - 1];
+  }
 }
 
 /**
@@ -129,7 +135,7 @@ function getNthFilm(character, filmNumber) {
  * Sample data expected output: 80124
 */
 function getCargoCapacityTotal(character) {
-  // TODO: Add your code here.
+ 
 }
 
 /**
